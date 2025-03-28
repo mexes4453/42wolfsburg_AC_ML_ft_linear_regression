@@ -1,18 +1,26 @@
 # utils entities used within both programs.
 import pandas as pd
-import matplotlib.pyplot as plt
 
 filename_contants = "constants.csv"
 filename_dataset = "data.csv"
 header_col0 = "theta0"
 header_col1 = "theta1"
 
-err_msg_fileNoExist = "Error! File (constant.csv or data.csv) is missing"
 
+err_msg_fileNoExist = "Error! File (constant.csv or data.csv) is missing"
+err_msg_modNotFound = "Error! Missing modules (pandas)"
+err_msg_invalidUsrInput = "Error! Invalid input. Enter numbers only."
 
 def GetDataSet():
     df = pd.read_csv(filename_dataset)
     return ((df['km']), (df['price']))
+
+
+
+
+def get_stats():
+    mileage, price = GetDataSet()
+    return mileage.mean(), mileage.std()
 
 
 
@@ -86,4 +94,12 @@ def show_iteration_stats(iter_idx, t_t0, t_t1, t0, t1, mse):
     print("iteration(%d): %15.4e; %15.4e; %15.4e; %15.4e; %25.5e" 
            %(iter_idx, t_t0, t_t1, t0, t1, mse))
 
+
+
+
+def get_constants():
+    df = pd.read_csv(filename_contants)
+    theta0 = (df['theta0'][0])
+    theta1 = (df['theta1'][0])
+    return theta0, theta1
 

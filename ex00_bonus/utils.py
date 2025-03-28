@@ -9,6 +9,8 @@ header_col1 = "theta1"
 
 
 err_msg_fileNoExist = "Error! File (constant.csv or data.csv) is missing"
+err_msg_modNotFound = "Error! Missing modules (pandas)"
+err_msg_invalidUsrInput = "Error! Invalid input. Enter numbers only."
 
 def GetDataSet():
     df = pd.read_csv(filename_dataset)

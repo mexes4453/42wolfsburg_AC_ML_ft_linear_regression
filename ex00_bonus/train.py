@@ -62,3 +62,5 @@ if __name__ == "__main__":
         print("\nExiting...\n")
     except (FileNotFoundError):
         print(utils.err_msg_fileNoExist)
+    except (ModuleNotFoundError):
+        print(utils.err_msg_modNotFound)

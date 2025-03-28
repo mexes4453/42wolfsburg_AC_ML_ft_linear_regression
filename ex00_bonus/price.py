@@ -11,24 +11,8 @@ def get_user_input():
 
 
 
-def get_stats():
-    mileage, price = utils.GetDataSet()
-    return mileage.mean(), mileage.std()
-
-
-
-
-def get_constants():
-    df = pd.read_csv(utils.filename_contants)
-    theta0 = (df['theta0'][0])
-    theta1 = (df['theta1'][0])
-    return theta0, theta1
-
-
-
-
 def normalize_input(x):
-    x_mean, x_std = get_stats()
+    x_mean, x_std = utils.get_stats()
     return ( (x - x_mean) / x_std )
 
 
@@ -42,7 +26,7 @@ def compute_price(mileage):
     mileage = normalize_input(mileage)  
 
     # 2. Retreive the computed constants  
-    theta0, theta1 = get_constants()
+    theta0, theta1 = utils.get_constants()
 
     # 3. Compute predicted price
     price = theta0 + (theta1 * mileage)
@@ -61,8 +45,15 @@ if __name__ == "__main__":
         print("\nExiting...\n")
     except (FileNotFoundError):
         print(utils.err_msg_fileNoExist)
+    except (ModuleNotFoundError):
+        print(utils.err_msg_modNotFound)
+    except (ValueError):
+        print(utils.err_msg_invalidUsrInput)
 
     
+
+
+
 
 
 
