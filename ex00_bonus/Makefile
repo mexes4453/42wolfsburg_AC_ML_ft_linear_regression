@@ -43,7 +43,7 @@ $(PRECISION):
 
 # remove all support files
 fclean:
-	rm -rf __pycache__ $(FILE_CONSTANTS) $(FILE_DATA)
+	rm -rf __pycache__ $(FILE_CONSTANTS)
 
 # remove final target files
 clean: fclean
